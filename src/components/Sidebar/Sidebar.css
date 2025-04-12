@@ -1,0 +1,16 @@
+
+.sidebar-container{
+    padding: 1rem;
+}
+
+.sidebar-list{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+.sidebar-item{
+    display: flex;
+    padding: 2rem;
+}

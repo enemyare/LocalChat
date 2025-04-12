@@ -1,21 +1,19 @@
 import {autorun, makeAutoObservable} from "mobx";
-import Room from "./Room.ts";
+import Room from "./entities/Room.ts";
+import {generateId} from "../utils/generateId.ts";
 
 export type RoomList = Room []
 
 class RoomStore {
   public roomList: RoomList = []
-  public lastRoomId: number = 0
 
   constructor() {
     makeAutoObservable(this)
   }
 
   public addRoom = () => {
-    const maxId = this.roomList.length > 0
-      ? Math.max(...this.roomList.map(room => room.room_id))
-      : 0
-    const room: Room = new Room(maxId + 1)
+    const id = generateId(this.roomList, "room_id")
+    const room: Room = new Room(id)
     this.roomList.push(room)
   }
 
